@@ -2,48 +2,47 @@
 #include <string>
 
 using namespace std;
-
 unsigned short height;
 
 
 unsigned short ReadPersonAge() {
-	std::cout << "Age: ";
+	cout << "Age: ";
 	unsigned short age;
-	std::cin >> age;
+	cin >> age;
 	return age;
 }
 
-std::string ReadPersonName() {
-	std::cout << "Name: ";
-	std::string name = "";
-	std::cin >> name;
+string ReadPersonName() {
+	cout << "Name: ";
+	string name = "";
+	cin >> name;
 	return name;
 }
 
 void ReadPersonHeight() {
-	std::cout << "Height: ";
-	std::cin >> height;
+	cout << "Height: ";
+	cin >> height;
 }
 
 void ReadPersonWeight(unsigned short& weight) {
-	std::cout << "Weight: ";
-	std::cin >> weight;
+	cout << "Weight: ";
+	cin >> weight;
 }
 
 
 void ReadPersonSalary(double* salary) {
-	std::cout << "Salary: ";
-	std::cin >> *salary;
+	cout << "Salary: ";
+	cin >> *salary;
 }
 
-void ReadPersonData(std::string& name, unsigned short& age, double& salary) {
+void ReadPersonData(string& name, unsigned short& age, double& salary) {
 	name = ReadPersonName();
 	age = ReadPersonAge();
 	ReadPersonSalary(&salary);
 
 }
 
-void ReadPersonData(std::string& name, unsigned short& age, unsigned short& heigth, unsigned short& weight) {
+void ReadPersonData(string& name, unsigned short& age, unsigned short& heigth, unsigned short& weight) {
 	name = ReadPersonName();
 	age = ReadPersonAge();
 	ReadPersonHeight();
@@ -51,26 +50,25 @@ void ReadPersonData(std::string& name, unsigned short& age, unsigned short& heig
 	ReadPersonWeight(weight);
 }
 
-void WritePersonData(unsigned short age, const std::string& name,
-	const std::string& height = "", const std::string& weight = "",
-	const std::string& salary = "") {
-	std::cout << "Age: " << age << "\n";
-	std::cout << "Name: " << name << "\n";
-	std::cout << "Height: " << height << "\n";
-	std::cout << "Weight: " << weight << "\n";
-	std::cout << "Salary: " << salary << "\n\n";
+void WritePersonData(unsigned short age, string& name,
+	const string& height = "", const string& weight = "",
+	const string& salary = "") {
+	cout << "Name: " << name << endl;
+	cout << "Age: " << age << endl;
+	if (!height.empty())cout << "Height: " << height << endl;
+	if (!weight.empty())cout << "Weight: " << weight << endl;
+	if (!salary.empty())cout << "Salary: " << salary << endl;
 }
 
 int main() {
-	std::string name;
+	string name;
 	unsigned short weight;
 	unsigned short age;
 	double salary;
 	string h;
 	ReadPersonData(name, age, salary);
-	WritePersonData(age, name, "", "", std::to_string(salary));
-
+	WritePersonData(age, name, "", "", to_string(salary));
 	ReadPersonData(name, age, height, weight);
-	WritePersonData(age, name, std::to_string(height), std::to_string(weight));
+	WritePersonData(age, name, to_string(height), to_string(weight));
 	return 0;
 }
